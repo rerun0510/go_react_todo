@@ -1,0 +1,33 @@
+{
+  "name": "go-react-api-container",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "api",
+  "workspaceFolder": "/go/src/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "mosapride.zenkaku",
+        "golang.go"
+      ],
+      "settings": {
+        "editor.formatOnPaste": true,
+        "editor.wordWrap": "on",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "files.autoSave": "onFocusChange",
+        "indentRainbow.ignoreLinePatterns": [
+          "/[ \t]* [*]/g",
+          "/[ \t]+[/]{2}/g"
+        ],
+        "[go]": {
+          "editor.defaultFormatter": "golang.go",
+          "editor.tabSize": 4,
+          "editor.insertSpaces": false
+        }
+      }
+    }
+  },
+  "forwardPorts": [8080],
+  "shutdownAction": "none"
+}
