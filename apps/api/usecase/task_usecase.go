@@ -1,8 +1,8 @@
 package usecase
 
 import (
+	domrepo "go-rest-api/domain/repository"
 	"go-rest-api/model"
-	"go-rest-api/repository"
 	"go-rest-api/validator"
 )
 
@@ -15,11 +15,11 @@ type ITaskUsecase interface {
 }
 
 type taskUsecase struct {
-	tr repository.ITaskRepository
+	tr domrepo.ITaskRepository
 	tv validator.ITaskValidator
 }
 
-func NewTaskUsecase(tr repository.ITaskRepository, tv validator.ITaskValidator) ITaskUsecase {
+func NewTaskUsecase(tr domrepo.ITaskRepository, tv validator.ITaskValidator) ITaskUsecase {
 	return &taskUsecase{tr, tv}
 }
 
