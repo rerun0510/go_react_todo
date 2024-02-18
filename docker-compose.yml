@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./apps/api/Dockerfile
+      target: base
     env_file: ./apps/api/.env
     depends_on:
       db:
