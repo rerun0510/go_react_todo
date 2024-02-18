@@ -5,7 +5,7 @@ import {
 import { useMutateAuth } from '../hooks/useMutateAuth'
 import { useQueryClient } from '@tanstack/react-query'
 import useStore from '../store'
-import { useQueryTasks } from '../hooks/usequeryTasks'
+import { useQueryTasks } from '../hooks/useQueryTasks'
 import { useMutateTask } from '../hooks/useMutateTask'
 import { FormEvent } from 'react'
 import { TaskItem } from './TaskItem'
