@@ -1,0 +1,47 @@
+name: API Deploy
+
+on:
+  workflow_dispatch:
+
+env:
+  REGION: asia-northeast1
+  API_IMAGE: ${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/dev-api/api:${{ github.sha }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: "${{ env.SERVICE_ACCOUNT }}"
+    
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Authorize Docker push
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
+
+      - name: Build a docker image
+        run: docker build -t ${{ env.API_IMAGE }} -f ./apps/api/Dockerfile .
+
+      - name: Push the docker image
+        run: docker push ${{ env.API_IMAGE }}
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: api
+          image: ${{ env.API_IMAGE }}
+          region: ${{ env.GCP_REGION }}
