@@ -1,0 +1,8 @@
+config:
+  gcp:project: your-gcp-project
+  gcp:region: asia-northeast1
+  go-react-todo:concurrency: "50"
+  go-react-todo:containerPort: "8080"
+  go-react-todo:cpu: "1"
+  go-react-todo:memory: 1Gi
+  github:repository: your-github-account/your-repository-name

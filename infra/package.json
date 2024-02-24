@@ -1,0 +1,12 @@
+{
+    "name": "go-react-todo",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18"
+    },
+    "dependencies": {
+        "@pulumi/docker": "^4.2.3",
+        "@pulumi/gcp": "^7.0.0",
+        "@pulumi/pulumi": "^3.0.0"
+    }
+}
