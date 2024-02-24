@@ -110,10 +110,6 @@ const invoker = new gcp.cloudrun.IamMember("invoker", {
   member: "allUsers",
 });
 
-//
-// START: GitHub Actions
-//
-
 // Enable IAM Credentials API
 const iamCredentialsApi = new gcp.projects.Service("iam-credentials-api", {
   service: "iamcredentials.googleapis.com",
@@ -205,11 +201,6 @@ const serviceAccountUserBinding = new gcp.projects.IAMBinding(
   }
 );
 
-//
-// END: GitHub Actions
-//
-
 // Export
 export const serviceAccountEmail = serviceAccount.email;
-export const serviceAccountName = serviceAccount.name;
 export const identityPoolProviderName = identityPoolProvider.name;
