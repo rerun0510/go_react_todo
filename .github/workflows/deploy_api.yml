@@ -5,7 +5,7 @@ on:
 
 env:
   REGION: asia-northeast1
-  API_IMAGE: ${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/dev-api/api:${{ github.sha }}
+  API_IMAGE: asia-northeast1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/dev-api/api:${{ github.sha }}
 
 jobs:
   deploy:
