@@ -187,6 +187,15 @@ const storageAdminBinding = new gcp.projects.IAMBinding(
   }
 );
 
+const artifactRegistryWriterBinding = new gcp.projects.IAMBinding(
+  "artifact-registry-writer-binding",
+  {
+    project,
+    role: "roles/artifactregistry.writer",
+    members: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`],
+  }
+);
+
 const serviceAccountUserBinding = new gcp.projects.IAMBinding(
   "service-account-user-binding",
   {
